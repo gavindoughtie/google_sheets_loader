@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="sheet.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Google Sheets Data Example</title>
+  <script type="module">
+    import {
+      load_sheet
+    } from "./load_sheet.mjs";
+    window.load = () => {
+      const data_url = document.querySelector("#url").value;
+      load_sheet(data_url, document.querySelector('#output'));
+    }
+  </script>
+</head>
+
+<body>
+  <div class="mb-3 flex justify-left">
+    <div class="mb-3 xl:w-96 w-full">
+      <label for="url" class="form-label mb-2 text-gray-700">Data URL</label />
+      <textarea class="
+          form-control
+          px-3
+          py-1.5
+          text-base
+          font-normal
+          text-gray-700
+          bg-white bg-clip-padding
+          border border-solid border-gray-300
+          rounded
+          transition
+          ease-in-out
+          m-0
+          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+        " id="url" placeholder="Enter a Google Sheets URL here">https://docs.google.com/spreadsheets/d/11XkkSwuZvNJeAxDkyJA9E9VGnFG4Dgj0yE9iTqtAY9Y/export?format=csv</textarea>
+      <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out" onclick="load()">Load</button>
+    </div>
+  </div>
+  <div id="output">
+    <p>Click the "Load" button to load a Google Sheets URL</p>
+  </div>
+  <script>
+    addEventListener('DOMContentLoaded', () => load());
+  </script>
+</body>
